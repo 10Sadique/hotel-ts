@@ -27,7 +27,7 @@ const SignIn = () => {
         signIn(email.value, password.value)
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 form.reset();
                 navigate(from, { replace: true });
             })
@@ -40,7 +40,7 @@ const SignIn = () => {
         googleSignIn()
             .then((result) => {
                 const user = result.user;
-                console.log(user);
+                // console.log(user);
                 navigate(from, { replace: true });
             })
             .catch((err) => {
