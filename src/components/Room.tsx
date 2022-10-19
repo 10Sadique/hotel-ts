@@ -16,7 +16,6 @@ type Props = {
 };
 
 const Room: React.FC<Props> = ({ room }: Props): JSX.Element => {
-    console.log(room);
     return (
         <div className="bg-gray-300 p-4 rounded-lg shadow-lg">
             <div className="mb-4">
