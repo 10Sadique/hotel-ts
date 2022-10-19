@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
+import Room from '../components/Room';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
 import Main from '../layout/Main';
@@ -26,6 +27,14 @@ export const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <Account />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: '/rooms/:id',
+                element: (
+                    <PrivateRoute>
+                        <Room />
                     </PrivateRoute>
                 ),
             },

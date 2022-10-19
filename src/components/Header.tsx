@@ -35,16 +35,19 @@ export default function Header() {
             <NavLink to={`/home`} className={active}>
                 Home
             </NavLink>
-            <NavLink className={active} to={`/account`}>
-                Account
-            </NavLink>
+
             {user?.uid ? (
-                <button
-                    onClick={handleSignOut}
-                    className="normal-case lg:w-auto w-full bg-purple-600 text-white py-2 px-5 rounded-md shadow-md shadow-deep-purple-600/50"
-                >
-                    Sign Out
-                </button>
+                <div className="space-x-5">
+                    <NavLink className={active} to={`/account`}>
+                        Account
+                    </NavLink>
+                    <button
+                        onClick={handleSignOut}
+                        className="normal-case lg:w-auto w-full bg-purple-600 text-white py-2 px-5 rounded-md shadow-md shadow-deep-purple-600/50"
+                    >
+                        Sign Out
+                    </button>
+                </div>
             ) : (
                 <div className="space-x-5">
                     <NavLink className={active} to={`/signin`}>

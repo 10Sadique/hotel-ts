@@ -8,7 +8,9 @@ const SignIn = () => {
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/';
 
-    const { signIn } = useContext(AuthContext) as AuthContextInterface;
+    const { signIn, googleSignIn } = useContext(
+        AuthContext
+    ) as AuthContextInterface;
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
@@ -31,6 +33,18 @@ const SignIn = () => {
             })
             .catch((error) => {
                 console.error(error);
+            });
+    };
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then((result) => {
+                const user = result.user;
+                console.log(user);
+                navigate(from, { replace: true });
+            })
+            .catch((err) => {
+                console.error(err);
             });
     };
 
@@ -77,7 +91,10 @@ const SignIn = () => {
                         Sign In
                     </button>
                     <p className="text-xs text-center">or</p>
-                    <button className="w-full py-2 bg-gray-400 text-gray-900 rounded-lg shadow-md shadow-gray-400/50 flex items-center justify-center gap-3">
+                    <button
+                        onClick={handleGoogleSignIn}
+                        className="w-full py-2 bg-gray-400 text-gray-900 rounded-lg shadow-md shadow-gray-400/50 flex items-center justify-center gap-3"
+                    >
                         <FaGoogle className="h-5 w-5" />
                         <span>Continue with Google</span>
                     </button>

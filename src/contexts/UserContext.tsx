@@ -9,7 +9,13 @@ import {
     updateProfile,
     onAuthStateChanged,
     signOut,
+    GoogleAuthProvider,
+    signInWithPopup,
 } from 'firebase/auth';
+
+interface Children {
+    children: React.ReactNode;
+}
 
 export interface AuthContextInterface {
     user: User | null;
@@ -18,15 +24,13 @@ export interface AuthContextInterface {
     signIn: (email: string, password: string) => Promise<UserCredential>;
     setName: (name: string) => Promise<void> | undefined;
     logOut: () => Promise<void>;
+    googleSignIn: () => Promise<UserCredential>;
 }
 
 const auth = getAuth(app);
+const googleProvider = new GoogleAuthProvider();
 
 export const AuthContext = createContext<AuthContextInterface | null>(null);
-
-interface Children {
-    children: React.ReactNode;
-}
 
 const UserContext = ({ children }: Children) => {
     const [user, setUser] = useState<User | null>(null);
@@ -40,6 +44,10 @@ const UserContext = ({ children }: Children) => {
     const signIn = (email: string, password: string) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
+    };
+
+    const googleSignIn = () => {
+        return signInWithPopup(auth, googleProvider);
     };
 
     const logOut = () => {
@@ -69,6 +77,7 @@ const UserContext = ({ children }: Children) => {
         signIn,
         setName,
         logOut,
+        googleSignIn,
     };
 
     return (

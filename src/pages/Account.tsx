@@ -13,8 +13,14 @@ const Account = () => {
                 <h1 className="text-center font-bold text-2xl text-gray-800">
                     Welcome {user?.displayName?.split(' ').at(-1)}
                 </h1>
-                <div>
-                    {user?.photoURL && <img src={user?.photoURL} alt="" />}
+                <div className="flex items-center justify-center">
+                    {user?.photoURL && (
+                        <img
+                            className="rounded-full"
+                            src={user?.photoURL}
+                            alt=""
+                        />
+                    )}
                 </div>
                 <div className="space-y-2">
                     <h1>Name: {user?.displayName}</h1>
