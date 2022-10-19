@@ -47,6 +47,7 @@ const UserContext = ({ children }: Children) => {
     };
 
     const googleSignIn = () => {
+        setLoading(true);
         return signInWithPopup(auth, googleProvider);
     };
 

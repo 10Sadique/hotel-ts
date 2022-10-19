@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Room from '../components/Room';
 import SignIn from '../components/SignIn';
 import SignUp from '../components/SignUp';
+import SingleRoom from '../components/SingleRoom';
 import Main from '../layout/Main';
 import Account from '../pages/Account';
 import Home from '../pages/Home';
@@ -34,7 +35,7 @@ export const router = createBrowserRouter([
                 path: '/rooms/:id',
                 element: (
                     <PrivateRoute>
-                        <Room />
+                        <SingleRoom />
                     </PrivateRoute>
                 ),
             },
