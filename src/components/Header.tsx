@@ -37,24 +37,27 @@ export default function Header() {
             </NavLink>
 
             {user?.uid ? (
-                <div className="space-x-5">
+                <div className="lg:space-x-5">
                     <NavLink className={active} to={`/account`}>
                         Account
                     </NavLink>
                     <button
                         onClick={handleSignOut}
-                        className="normal-case lg:w-auto w-full bg-purple-600 text-white py-2 px-5 rounded-md shadow-md shadow-deep-purple-600/50"
+                        className="normal-case lg:w-auto w-full bg-purple-600 text-white py-2 px-5 rounded-md shadow-md shadow-deep-purple-600/50 mt-5 lg:mt-0"
                     >
                         Sign Out
                     </button>
                 </div>
             ) : (
-                <div className="space-x-5">
+                <div className="lg:space-x-">
                     <NavLink className={active} to={`/signin`}>
                         Sign In
                     </NavLink>
                     <NavLink to={`/signup`}>
-                        <button className="normal-case lg:w-auto w-full bg-purple-600 text-white py-2 px-5 rounded-md shadow-md shadow-deep-purple-600/50">
+                        <button
+                            className="normal-case lg:w-auto w-full bg-purple-600 text-white py-2 px-5 rounded-md shadow-md shadow-deep-purple-600/50 mt-5 lg:mt-0
+                        "
+                        >
                             Sign Up
                         </button>
                     </NavLink>
@@ -68,13 +71,13 @@ export default function Header() {
             <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
                 <Link
                     to={`/`}
-                    className="text-purple-700 mr-4 cursor-pointer text-xl font-black"
+                    className="text-purple-700  cursor-pointer text-xl font-black"
                 >
                     Hotel TS
                 </Link>
                 <div className="hidden lg:block">{navList}</div>
                 <div
-                    className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden cursor-pointer"
+                    className=" h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden cursor-pointer"
                     onClick={() => setOpenNav(!openNav)}
                 >
                     {openNav ? (
